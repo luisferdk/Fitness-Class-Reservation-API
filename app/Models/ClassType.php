@@ -14,7 +14,16 @@ class ClassType extends Model
         'description',
         'default_capacity',
         'min_attendees',
-        'is_active'
+        'is_active',
+    ];
+
+    protected $visible = [
+        'id',
+        'name',
+        'description',
+        'default_capacity',
+        'min_attendees',
+        'is_active',
     ];
 
     protected $casts = [

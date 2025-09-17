@@ -15,7 +15,7 @@ class StoreClassTypeRequest extends FormRequest
     return [
       'name' => ['required', 'string', 'max:255', 'unique:class_types,name'],
       'description' => ['nullable', 'string'],
-      'default_capacity' => ['required', 'integer', 'min:1'],
+      'default_capacity' => ['nullable', 'integer'],
       'min_attendees' => ['nullable', 'integer', 'min:1'],
       'is_active' => ['nullable', 'boolean'],
     ];

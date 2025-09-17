@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name')->unique();
             $table->text('description')->nullable();
-            $table->unsignedInteger('default_capacity');
+            $table->unsignedInteger('default_capacity')->default(0);
             $table->unsignedInteger('min_attendees')->default(2);
             $table->boolean('is_active')->default(true);
             $table->timestamps();

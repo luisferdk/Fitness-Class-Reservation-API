@@ -13,7 +13,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::apiResource('class-types', ClassTypeController::class)->only(['index', 'show']);
     Route::apiResource('class-schedules', ClassScheduleController::class)->only(['index', 'show']);
     Route::apiResource('class-sessions', ClassSessionController::class)->only(['index', 'show']);
     Route::apiResource('reservations', ReservationController::class);
@@ -22,7 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
-    Route::apiResource('class-types', ClassTypeController::class)->only(['store', 'update', 'destroy']);
+    Route::apiResource('class-types', ClassTypeController::class);
     Route::apiResource('class-schedules', ClassScheduleController::class)->only(['store', 'update', 'destroy']);
     Route::apiResource('class-sessions', ClassSessionController::class)->only(['store', 'update', 'destroy']);
 });

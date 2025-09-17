@@ -48,6 +48,6 @@ class ClassTypeController extends Controller
     public function destroy(ClassType $classType)
     {
         $classType->delete();
-        return response()->json(['message' => 'Deleted']);
+        return response()->noContent();
     }
 }

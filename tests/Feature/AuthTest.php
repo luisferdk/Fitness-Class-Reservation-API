@@ -32,4 +32,24 @@ class AuthTest extends TestCase
       'Authorization' => "Bearer {$token}"
     ])->assertOk();
   }
+
+  public function test_create_user_and_prevent_duplicate(): void
+  {
+
+    $this->postJson('/api/register', [
+      'name' => 'User',
+      'email' => 'user@example.com',
+      'password' => 'Password123#',
+      'password_confirmation' => 'Password123#',
+    ])->assertCreated();
+
+
+    $this->postJson('/api/register', [
+      'name' => 'User',
+      'email' => 'user@example.com',
+      'password' => 'Password123#',
+      'password_confirmation' => 'Password123#',
+    ])->assertStatus(422)
+      ->assertJsonValidationErrors(['email']);
+  }
 }

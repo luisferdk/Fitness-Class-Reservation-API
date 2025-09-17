@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->createUsers();
-        /* $this->createClassTypes();
-        $this->createClassSchedules();
+        $this->createClassTypes();
+        /* $this->createClassSchedules();
         $this->createClassSessions();
         $this->createReservations(); */
     }
@@ -104,7 +104,6 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Boxing',
                 'description' => 'Combat fitness and self-defense',
-                'default_capacity' => 10,
                 'min_attendees' => 2,
                 'is_active' => true,
             ],

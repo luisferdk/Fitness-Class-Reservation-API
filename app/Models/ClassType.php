@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ClassType extends Model
 {
@@ -21,4 +22,20 @@ class ClassType extends Model
         'default_capacity' => 'integer',
         'min_attendees' => 'integer',
     ];
+
+    /**
+     * Get the class schedules for the class type.
+     */
+    public function classSchedules(): HasMany
+    {
+        return $this->hasMany(ClassSchedule::class);
+    }
+
+    /**
+     * Get the class sessions for the class type.
+     */
+    public function classSessions(): HasMany
+    {
+        return $this->hasMany(ClassSession::class);
+    }
 }

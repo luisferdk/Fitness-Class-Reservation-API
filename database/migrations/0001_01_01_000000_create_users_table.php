@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\RoleCode;
+use App\Enums\UserStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,11 +14,13 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['user', 'instructor', 'admin'])->default('user');
+            $table->string('avatar_url')->nullable();
+            $table->enum('role', array_column(RoleCode::cases(), 'value'))->default(RoleCode::STUDENT->value);
+            $table->enum('status', array_column(UserStatus::cases(), 'value'))->default(UserStatus::ACTIVE->value);
             $table->rememberToken();
             $table->timestamps();
         });

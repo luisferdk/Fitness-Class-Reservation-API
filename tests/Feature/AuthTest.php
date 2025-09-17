@@ -13,15 +13,15 @@ class AuthTest extends TestCase
   {
 
     $this->postJson('/api/register', [
-      'name' => 'Ney',
-      'email' => 'ney@example.com',
-      'password' => 'supersegura123',
+      'name' => 'User',
+      'email' => 'user@example.com',
+      'password' => 'Pasword123#',
     ])->assertCreated();
 
 
     $login = $this->postJson('/api/login', [
-      'email' => 'ney@example.com',
-      'password' => 'supersegura123',
+      'email' => 'user@example.com',
+      'password' => 'Pasword123#',
     ])->assertOk();
 
     $token = $login->json('token');

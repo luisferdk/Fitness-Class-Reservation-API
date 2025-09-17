@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Meetings'),
+    'name' => env('APP_NAME', 'Fitness Class Booking API'),
 
     /*
     |--------------------------------------------------------------------------
